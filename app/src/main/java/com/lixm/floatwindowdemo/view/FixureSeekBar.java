@@ -1,4 +1,4 @@
-package com.lixm.floatwindowdemo;
+package com.lixm.floatwindowdemo.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatSeekBar;
+
+import com.lixm.floatwindowdemo.R;
 
 
 /**

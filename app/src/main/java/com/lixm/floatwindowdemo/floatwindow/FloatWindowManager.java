@@ -1,12 +1,15 @@
 package com.lixm.floatwindowdemo.floatwindow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.WindowManager;
+
+import com.lixm.floatwindowdemo.activity.PlayerActivity;
 
 /**
  * Describe:悬浮窗统一管理，与悬浮窗交互的真正实现
@@ -24,7 +27,7 @@ public class FloatWindowManager {
     /**
      * @param context 必须为应用程序的Context
      */
-    public static void createFloatWindow(Context context,String url,float time) {
+    public static void createFloatWindow(final Context context, String url, float time) {
         params = new WindowManager.LayoutParams();
         final WindowManager manager = getWindowManager(context);
         floatLayout = new FloatLayout(context);
@@ -38,7 +41,8 @@ public class FloatWindowManager {
 
             @Override
             public void onClick() {
-
+                context.startActivity(new Intent(context, PlayerActivity.class));
+                hide();
             }
 
             @Override
@@ -46,7 +50,7 @@ public class FloatWindowManager {
                 hide();
             }
         });
-        floatLayout.startPlay(url,time);
+        floatLayout.startPlay(url, time);
         if (Build.VERSION.SDK_INT >= 24) {//android7.0 不能用TYPE_TOAST
             params.type = WindowManager.LayoutParams.TYPE_PHONE;
         } else {//以下代码块是的android6.0 之后的用户不必再去手动开启悬浮框权限

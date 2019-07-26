@@ -13,7 +13,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.lixm.floatwindowdemo.R;
-import com.lixm.floatwindowdemo.TimeUtil;
+import com.lixm.floatwindowdemo.utils.TimeUtil;
 import com.tencent.rtmp.ITXVodPlayListener;
 import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.TXVodPlayer;
@@ -139,11 +139,12 @@ public class FloatLayout extends LinearLayout implements ITXVodPlayListener {
             case MotionEvent.ACTION_MOVE:
                 xInScreen = event.getRawX();
                 yInScreen = event.getRawY() - getStatusBarHeight();
-                //手指移动的时候，更新小悬浮框的位置
-                updateViewPosition();
+                if (Math.abs(xDownInScreen - xInScreen) > 3 && Math.abs(yDownInScreen - yInScreen) > 3)
+                    //手指移动的时候，更新小悬浮框的位置
+                    updateViewPosition();
                 break;
             case MotionEvent.ACTION_UP:
-                if (xDownInScreen == xInScreen && yDownInScreen == yInScreen) {
+                if (Math.abs(xDownInScreen - xInScreen) <= 3 && Math.abs(yDownInScreen - yInScreen) <= 3) {
                     if (controller != null) {
                         controller.onClick();
                     }

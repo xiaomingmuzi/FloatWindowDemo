@@ -1,4 +1,4 @@
-package com.lixm.floatwindowdemo;
+package com.lixm.floatwindowdemo.activity;
 
 import android.app.Activity;
 import android.app.AppOpsManager;
@@ -20,7 +20,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.lixm.floatwindowdemo.R;
 import com.lixm.floatwindowdemo.floatwindow.FloatActionController;
+import com.lixm.floatwindowdemo.utils.TimeUtil;
 import com.tencent.rtmp.ITXVodPlayListener;
 import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.TXVodPlayer;
@@ -28,7 +30,7 @@ import com.tencent.rtmp.ui.TXCloudVideoView;
 
 import java.lang.reflect.Method;
 
-public class MainActivity extends AppCompatActivity implements ITXVodPlayListener {
+public class PlayerActivity extends AppCompatActivity implements ITXVodPlayListener {
 
     private Context mContext;
     private TXCloudVideoView video_view;
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements ITXVodPlayListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_player);
 
         mContext = this;
         video_view = findViewById(R.id.video_view);
@@ -79,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements ITXVodPlayListene
         mVodPlayer.setVodListener(this);
         mVodPlayer.enableHardwareDecode(true);
         url = "http://200024424.vod.myqcloud.com/200024424_709ae516bdf811e6ad39991f76a4df69.f20.mp4";
+//        url = "http://t.cn/AiOGOK65";
         mVodPlayer.startPlay(url);
 
         iv_back = findViewById(R.id.iv_back);
@@ -127,12 +130,14 @@ public class MainActivity extends AppCompatActivity implements ITXVodPlayListene
                 //开启悬浮框
                 float time=fixureSeekBar.getProgress();
                 Log.w("当前时间","time : "+time);
-                FloatActionController.getInstance().startMonkServer(mContext, url, time);
+                FloatActionController.getInstance().startMonkServer(getApplicationContext(), url, time);
                 if (mVodPlayer.isPlaying())
                     mVodPlayer.pause();
+                finish();
 
             }
         });
+
     }
 
     private final int OP_SYSTEM_ALERT_WINDOW = 24;
@@ -190,6 +195,6 @@ public class MainActivity extends AppCompatActivity implements ITXVodPlayListene
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        FloatActionController.getInstance().stopMonkServer(this);
+//        FloatActionController.getInstance().stopMonkServer(this);
     }
 }
