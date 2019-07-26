@@ -1,4 +1,4 @@
-package com.lixm.floatwindowdemo;
+package com.lixm.floatwindowdemo.floatwindow;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".FloatMonkService"/>
+        <service android:name=".floatwindow.FloatMonkService"/>
     </application>
 
 </manifest>

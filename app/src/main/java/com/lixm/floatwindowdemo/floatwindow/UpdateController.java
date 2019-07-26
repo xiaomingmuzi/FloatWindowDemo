@@ -1,7 +1,7 @@
-package com.lixm.floatwindowdemo;
+package com.lixm.floatwindowdemo.floatwindow;
 
 /**
- * Describe:
+ * Describe:FloatLayout交互接口
  * <p>
  * Author: Lixm
  * Date: 2019/7/24

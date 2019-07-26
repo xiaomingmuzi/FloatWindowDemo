@@ -1,4 +1,4 @@
-package com.lixm.floatwindowdemo;
+package com.lixm.floatwindowdemo.floatwindow;
 
 /**
  * Describe:

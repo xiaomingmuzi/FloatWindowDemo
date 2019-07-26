@@ -1,4 +1,4 @@
-package com.lixm.floatwindowdemo;
+package com.lixm.floatwindowdemo.floatwindow;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.lixm.floatwindowdemo.R;
+import com.lixm.floatwindowdemo.TimeUtil;
 import com.tencent.rtmp.ITXVodPlayListener;
 import com.tencent.rtmp.TXLiveConstants;
 import com.tencent.rtmp.TXVodPlayer;
